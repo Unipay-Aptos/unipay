@@ -26,7 +26,7 @@ export const Header = () => {
               Read Docs
             </Button>
           </Link>
-          <MobileMenu />
+
         </div>
       </header>
     </div>
