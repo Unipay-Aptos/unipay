@@ -22,12 +22,12 @@ export function Hero() {
 
         <h1 className="text-5xl sm:text-6xl md:text-7xl font-sentient">
           Fluid Protocol <br />
-          <i className="font-light">Cross-Chain USDC</i> Transfers
-        </h1>
+          <i className="font-light">Cross-Chain Aptos</i> Viability
+        </h1> 
 
         <p className="font-mono text-sm sm:text-base text-foreground/60 text-balance mt-8 max-w-[540px] mx-auto">
-          Seamless USDC transfers from Base Sepolia (EVM) to Aptos (Move) using Circle CCTP via Wormhole SDK. 
-          One protocol. Multiple chains. Zero boundaries.
+          
+            Aptos apps aren't limited to Aptos anymore. One protocol. Multiple chains. Zero boundaries.
         </p>
 
         <Link className="contents max-sm:hidden" href="/#contact">

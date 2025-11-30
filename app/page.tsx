@@ -47,7 +47,7 @@ export default function Home() {
               <div className="text-5xl font-mono mb-4 text-foreground/40">03</div>
               <h3 className="text-xl font-mono uppercase mb-4">Complete</h3>
               <p className="text-sm text-foreground/60 font-mono">
-                Complete the transfer on Aptos. USDC is minted/released to the recipient address.
+                Complete the transfer on any supported chain. USDC is minted/released to the recipient address.
               </p>
             </div>
           </div>
@@ -99,8 +99,8 @@ import { transferUsdcViaCctp } from '@fluid-labs/sdk';
 const result = await transferUsdcViaCctp({
   amount: "1.0", // USDC
   fromChain: "BaseSepolia",
-  toChain: "Aptos",
-  recipient: aptosAddress
+  toChain: "Aptos", // or any supported chain
+  recipient: recipientAddress
 });
 
 // That's it! SDK handles:
@@ -147,10 +147,10 @@ const result = await transferUsdcViaCctp({
             </div>
             
             <div>
-              <h3 className="text-xl font-mono uppercase mb-4">Base → Aptos</h3>
+              <h3 className="text-xl font-mono uppercase mb-4">Multi-Chain Support</h3>
               <p className="text-sm text-foreground/60 font-mono mb-6">
-                The only method that works for Base Sepolia (EVM) to Aptos (Move) transfers. 
-                Bridging the gap between EVM and Move ecosystems.
+                Connect EVM and Move ecosystems seamlessly. Aptos apps aren't limited to Aptos anymore. 
+                Transfer USDC across any supported chain combination.
               </p>
             </div>
             
