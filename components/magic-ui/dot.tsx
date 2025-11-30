@@ -39,9 +39,13 @@ export function AnimatedGridPattern({
   const id = useId()
   const containerRef = useRef(null)
   const [dimensions, setDimensions] = useState({ width: 0, height: 0 })
-  const [squares, setSquares] = useState(() => generateSquares(numSquares))
+  const [squares, setSquares] = useState<Array<{ id: number; pos: [number, number] }>>([])
+  const [mounted, setMounted] = useState(false)
 
-  function getPos() {
+  function getPos(): [number, number] {
+    if (dimensions.width === 0 || dimensions.height === 0) {
+      return [0, 0]
+    }
     return [
       Math.floor((Math.random() * dimensions.width) / width),
       Math.floor((Math.random() * dimensions.height) / height),
@@ -49,12 +53,17 @@ export function AnimatedGridPattern({
   }
 
   // Adjust the generateSquares function to return objects with an id, x, and y
-  function generateSquares(count: number) {
+  function generateSquares(count: number): Array<{ id: number; pos: [number, number] }> {
     return Array.from({ length: count }, (_, i) => ({
       id: i,
       pos: getPos(),
     }))
   }
+
+  // Only mount on client to avoid hydration mismatch
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   // Function to update a single square's position
   const updateSquarePosition = (id: number) => {
@@ -63,19 +72,19 @@ export function AnimatedGridPattern({
         sq.id === id
           ? {
               ...sq,
-              pos: getPos(),
+              pos: getPos() as [number, number],
             }
           : sq
       )
     )
   }
 
-  // Update squares to animate in
+  // Update squares to animate in (only on client after mount)
   useEffect(() => {
-    if (dimensions.width && dimensions.height) {
+    if (mounted && dimensions.width && dimensions.height) {
       setSquares(generateSquares(numSquares))
     }
-  }, [dimensions, numSquares, generateSquares])
+  }, [mounted, dimensions, numSquares])
 
   // Resize observer to update container dimensions
   useEffect(() => {
@@ -126,8 +135,9 @@ export function AnimatedGridPattern({
         </pattern>
       </defs>
       <rect width="100%" height="100%" fill={`url(#${id})`} />
-      <svg x={x} y={y} className="overflow-visible">
-        {squares.map(({ pos: [x, y], id }, index) => (
+      {mounted && (
+        <svg x={x} y={y} className="overflow-visible">
+          {squares.map(({ pos: [x, y], id }, index) => (
           <motion.rect
             initial={{ opacity: 0 }}
             animate={{ opacity: maxOpacity }}
@@ -146,8 +156,9 @@ export function AnimatedGridPattern({
             fill="currentColor"
             strokeWidth="0"
           />
-        ))}
-      </svg>
+          ))}
+        </svg>
+      )}
     </svg>
   )
 }

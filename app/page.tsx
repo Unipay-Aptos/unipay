@@ -6,6 +6,8 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { AnimatedGridPattern } from "@/components/magic-ui/grid";
 import { CodeComparison } from "@/components/magic-ui/code-comparison";
+import { FlickeringGrid } from "@/components/magic-ui/flicker";
+import { Particles } from "@/components/magic-ui/particiles";
 
 export default function Home() {
   return (
@@ -15,11 +17,13 @@ export default function Home() {
       
       {/* How It Works Section */}
       <section id="about" className="container py-24 px-4 relative overflow-hidden">
-        <AnimatedGridPattern
-          numSquares={30}
-          maxOpacity={0.1}
-          duration={3}
-          className="[mask-image:linear-gradient(to_bottom,white,transparent)]"
+        <FlickeringGrid
+          squareSize={4}
+          gridGap={6}
+          flickerChance={0.3}
+          color="rgb(255, 255, 255)"
+          maxOpacity={0.2}
+          className="absolute inset-0"
         />
         <div className="max-w-4xl mx-auto relative z-10">
           <h2 className="text-4xl sm:text-5xl font-sentient mb-12 text-center">
@@ -56,11 +60,13 @@ export default function Home() {
 
       {/* Code Example Section */}
       <section className="container py-24 px-4 relative overflow-hidden">
-        <AnimatedGridPattern
-          numSquares={40}
-          maxOpacity={0.08}
-          duration={4}
-          className="[mask-image:linear-gradient(to_top,white,transparent)]"
+        <Particles
+          quantity={80}
+          staticity={50}
+          ease={50}
+          size={0.4}
+          color="#ffffff"
+          className="absolute inset-0 opacity-40"
         />
         <div className="max-w-6xl mx-auto relative z-10">
           <h2 className="text-4xl sm:text-5xl font-sentient mb-12 text-center">
@@ -120,7 +126,7 @@ const result = await transferUsdcViaCctp({
       <section id="portfolio" className="container py-24 px-4 bg-foreground/5 relative overflow-hidden">
         <AnimatedGridPattern
           numSquares={25}
-          maxOpacity={0.12}
+          maxOpacity={0.08}
           duration={3}
           className="[mask-image:linear-gradient(to_bottom,white,transparent)]"
         />
