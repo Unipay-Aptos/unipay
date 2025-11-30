@@ -38,7 +38,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased">
         <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
-          <Header />
+        
           {children}
         </ThemeProvider>
       </body>

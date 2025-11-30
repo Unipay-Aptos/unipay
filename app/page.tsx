@@ -8,10 +8,12 @@ import { AnimatedGridPattern } from "@/components/magic-ui/grid";
 import { CodeComparison } from "@/components/magic-ui/code-comparison";
 import { FlickeringGrid } from "@/components/magic-ui/flicker";
 import { Particles } from "@/components/magic-ui/particiles";
+import { Header } from "@/components/header";
 
 export default function Home() {
   return (
     <>
+      <Header />
       <Hero />
       <Leva hidden />
       
