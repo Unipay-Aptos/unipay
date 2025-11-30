@@ -1,23 +1,43 @@
+"use client";
+
 import { DocsSidebar } from "@/components/new/docs-sidebar";
+import { HyperText } from "@/components/text-animations/hover";
+import { Highlighter } from "@/components/text-animations/text-highlighter";
+import { CodeBlock } from "@/components/docs/code-block";
+import { AnimatedSection } from "@/components/docs/animated-section";
+import { motion } from "motion/react";
 
 export default function ExamplesPage() {
   return (
     <div className="flex min-h-screen">
       <DocsSidebar />
-      <div className="flex-1 ml-[3.05rem] lg:ml-[15rem] transition-all duration-200">
-        <main className="container py-12 px-6 max-w-4xl">
+      <div className="flex-1 ml-[3.05rem] transition-all duration-200 lg:ml-[15rem]">
+        <main className="container max-w-4xl px-6 py-12">
           <div className="prose prose-invert max-w-none">
-            <h1 className="text-4xl sm:text-5xl font-sentient mb-6">
-              Examples
-            </h1>
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h1 className="text-4xl sm:text-5xl font-sentient mb-6">
+                <HyperText startOnView duration={1200} className="text-4xl sm:text-5xl font-sentient">
+                  Examples
+                </HyperText>
+              </h1>
+            </motion.div>
 
-            <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8">
-              <h2 className="text-2xl font-sentient mb-4">Basic Transfer</h2>
-              <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
-                The simplest way to transfer USDC from Base Sepolia to Aptos:
-              </p>
-              <code className="block p-4 bg-background border border-foreground/20 rounded text-foreground overflow-x-auto text-sm">
-{`import { transferUsdcViaCctp } from '@fluid-sdk/fluid-sdk';
+            <AnimatedSection delay={0.1}>
+              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
+                <h2 className="text-2xl font-sentient mb-4">
+                  <Highlighter color="#4F46E5" action="underline" isView>
+                    Basic Transfer
+                  </Highlighter>
+                </h2>
+                <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
+                  The simplest way to transfer USDC from Base Sepolia to Aptos:
+                </p>
+                <CodeBlock
+                  code={`import { transferUsdcViaCctp } from '@fluid-sdk/fluid-sdk';
 
 async function transfer() {
   try {
@@ -35,16 +55,24 @@ async function transfer() {
 }
 
 transfer();`}
-              </code>
-            </div>
+                  language="typescript"
+                  filename="transfer.ts"
+                />
+              </div>
+            </AnimatedSection>
 
-            <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8">
-              <h2 className="text-2xl font-sentient mb-4">Transfer with Custom Recipient</h2>
-              <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
-                Specify a custom Aptos address as the recipient:
-              </p>
-              <code className="block p-4 bg-background border border-foreground/20 rounded text-foreground overflow-x-auto text-sm">
-{`import { transferUsdcViaCctp } from '@fluid-sdk/fluid-sdk';
+            <AnimatedSection delay={0.2}>
+              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
+                <h2 className="text-2xl font-sentient mb-4">
+                  <Highlighter color="#10B981" action="box" isView>
+                    Transfer with Custom Recipient
+                  </Highlighter>
+                </h2>
+                <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
+                  Specify a custom Aptos address as the recipient:
+                </p>
+                <CodeBlock
+                  code={`import { transferUsdcViaCctp } from '@fluid-sdk/fluid-sdk';
 
 const result = await transferUsdcViaCctp({
   amount: "0.5",
@@ -56,16 +84,24 @@ const result = await transferUsdcViaCctp({
 console.log('Transfer ID:', result.transferId);
 console.log('Source TX:', result.sourceTx);
 console.log('Destination TX:', result.destinationTx);`}
-              </code>
-            </div>
+                  language="typescript"
+                  filename="custom-recipient.ts"
+                />
+              </div>
+            </AnimatedSection>
 
-            <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8">
-              <h2 className="text-2xl font-sentient mb-4">Error Handling</h2>
-              <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
-                Comprehensive error handling example:
-              </p>
-              <code className="block p-4 bg-background border border-foreground/20 rounded text-foreground overflow-x-auto text-sm">
-{`import { transferUsdcViaCctp } from '@fluid-sdk/fluid-sdk';
+            <AnimatedSection delay={0.3}>
+              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
+                <h2 className="text-2xl font-sentient mb-4">
+                  <Highlighter color="#F59E0B" action="bracket" isView>
+                    Error Handling
+                  </Highlighter>
+                </h2>
+                <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
+                  Comprehensive error handling example:
+                </p>
+                <CodeBlock
+                  code={`import { transferUsdcViaCctp } from '@fluid-sdk/fluid-sdk';
 
 async function transferWithErrorHandling() {
   try {
@@ -91,37 +127,64 @@ async function transferWithErrorHandling() {
     }
   }
 }`}
-              </code>
-            </div>
+                  language="typescript"
+                  filename="error-handling.ts"
+                />
+              </div>
+            </AnimatedSection>
 
-            <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8">
-              <h2 className="text-2xl font-sentient mb-4">CLI Usage</h2>
-              <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
-                Run transfers directly from the command line:
-              </p>
-              <div className="space-y-4 font-mono text-sm">
-                <div>
-                  <p className="text-foreground/60 mb-2">Transfer 1.0 USDC (uses sponsor wallet as recipient):</p>
-                  <code className="block p-3 bg-background border border-foreground/20 rounded text-foreground">
-                    npx tsx src/runCctp.ts --amount 1.0
-                  </code>
-                </div>
-                <div>
-                  <p className="text-foreground/60 mb-2">Transfer 0.5 USDC to a specific Aptos address:</p>
-                  <code className="block p-3 bg-background border border-foreground/20 rounded text-foreground">
-                    npx tsx src/runCctp.ts --amount 0.5 --to 0xc3e2a21da9f68dcd3ad8668c8fb72ede9f46fea67652fbffa9db8f8af0c612cf
-                  </code>
+            <AnimatedSection delay={0.4}>
+              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
+                <h2 className="text-2xl font-sentient mb-4">
+                  <Highlighter color="#8B5CF6" action="circle" isView>
+                    CLI Usage
+                  </Highlighter>
+                </h2>
+                <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
+                  Run transfers directly from the command line:
+                </p>
+                <div className="space-y-4 font-mono text-sm">
+                  {[
+                    {
+                      label: "Transfer 1.0 USDC (uses sponsor wallet as recipient):",
+                      code: "npx tsx src/runCctp.ts --amount 1.0"
+                    },
+                    {
+                      label: "Transfer 0.5 USDC to a specific Aptos address:",
+                      code: "npx tsx src/runCctp.ts --amount 0.5 --to 0xc3e2a21da9f68dcd3ad8668c8fb72ede9f46fea67652fbffa9db8f8af0c612cf"
+                    }
+                  ].map((item, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.5, delay: 0.5 + idx * 0.1 }}
+                    >
+                      <p className="text-foreground/60 mb-3">
+                        <Highlighter color="#3B82F6" action="highlight" isView>
+                          {item.label}
+                        </Highlighter>
+                      </p>
+                      <CodeBlock code={item.code} language="bash" />
+                    </motion.div>
+                  ))}
                 </div>
               </div>
-            </div>
+            </AnimatedSection>
 
-            <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8">
-              <h2 className="text-2xl font-sentient mb-4">TypeScript Types</h2>
-              <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
-                Full TypeScript support with type definitions:
-              </p>
-              <code className="block p-4 bg-background border border-foreground/20 rounded text-foreground overflow-x-auto text-sm">
-{`import { transferUsdcViaCctp, TransferResult } from '@fluid-sdk/fluid-sdk';
+            <AnimatedSection delay={0.5}>
+              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
+                <h2 className="text-2xl font-sentient mb-4">
+                  <Highlighter color="#EF4444" action="underline" isView>
+                    TypeScript Types
+                  </Highlighter>
+                </h2>
+                <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
+                  Full TypeScript support with type definitions:
+                </p>
+                <CodeBlock
+                  code={`import { transferUsdcViaCctp, TransferResult } from '@fluid-sdk/fluid-sdk';
 
 interface TransferParams {
   amount: string;
@@ -141,16 +204,24 @@ async function typedTransfer(): Promise<TransferResult> {
   const result: TransferResult = await transferUsdcViaCctp(params);
   return result;
 }`}
-              </code>
-            </div>
+                  language="typescript"
+                  filename="types.ts"
+                />
+              </div>
+            </AnimatedSection>
 
-            <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8">
-              <h2 className="text-2xl font-sentient mb-4">Advanced: Custom Configuration</h2>
-              <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
-                For advanced use cases, you can configure custom signers and SDK instances:
-              </p>
-              <code className="block p-4 bg-background border border-foreground/20 rounded text-foreground overflow-x-auto text-sm">
-{`import { 
+            <AnimatedSection delay={0.6}>
+              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
+                <h2 className="text-2xl font-sentient mb-4">
+                  <Highlighter color="#6366F1" action="box" isView>
+                    Advanced: Custom Configuration
+                  </Highlighter>
+                </h2>
+                <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
+                  For advanced use cases, you can configure custom signers and SDK instances:
+                </p>
+                <CodeBlock
+                  code={`import { 
   transferUsdcViaCctp,
   getEvmSigner,
   getAptosSigner,
@@ -182,32 +253,42 @@ const result = await transferUsdcViaCctp({
   recipient: aptosAddress,
   // Custom signers can be passed here if needed
 });`}
-              </code>
-            </div>
+                  language="typescript"
+                  filename="advanced.ts"
+                />
+              </div>
+            </AnimatedSection>
 
-            <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5">
-              <h2 className="text-2xl font-sentient mb-4">Transfer Result</h2>
-              <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
-                The transfer function returns a result object with the following structure:
-              </p>
-              <code className="block p-4 bg-background border border-foreground/20 rounded text-foreground overflow-x-auto text-sm">
-{`interface TransferResult {
+            <AnimatedSection delay={0.7}>
+              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 backdrop-blur-sm">
+                <h2 className="text-2xl font-sentient mb-4">
+                  <Highlighter color="#10B981" action="bracket" isView>
+                    Transfer Result
+                  </Highlighter>
+                </h2>
+                <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
+                  The transfer function returns a result object with the following structure:
+                </p>
+                <CodeBlock
+                  code={`interface TransferResult {
   transferId: string;           // Unique transfer identifier
-  sourceTx: string;              // Base Sepolia transaction hash
-  destinationTx?: string;        // Aptos transaction hash (after completion)
-  attestation?: string;          // Circle attestation message
+  sourceTx: string;            // Base Sepolia transaction hash
+  destinationTx?: string;      // Aptos transaction hash (after completion)
+  attestation?: string;        // Circle attestation message
   status: 'initiated' | 'completed' | 'failed';
-  amount: string;                // Transfer amount in USDC
-  fromChain: string;             // Source chain
-  toChain: string;               // Destination chain
-  recipient: string;             // Recipient address
+  amount: string;              // Transfer amount in USDC
+  fromChain: string;           // Source chain
+  toChain: string;             // Destination chain
+  recipient: string;           // Recipient address
 }`}
-              </code>
-            </div>
+                  language="typescript"
+                  filename="types.ts"
+                />
+              </div>
+            </AnimatedSection>
           </div>
         </main>
       </div>
     </div>
   );
 }
-

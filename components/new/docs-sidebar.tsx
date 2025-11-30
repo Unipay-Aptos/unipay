@@ -9,19 +9,11 @@ import {
   Download,
   Layers,
   Zap,
-  ChevronsUpDown,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
 import { Separator } from "@/components/ui/separator";
 
 const sidebarVariants = {
@@ -33,10 +25,6 @@ const sidebarVariants = {
   },
 };
 
-const contentVariants = {
-  open: { display: "block", opacity: 1 },
-  closed: { display: "block", opacity: 1 },
-};
 
 const variants = {
   open: {
@@ -59,23 +47,23 @@ const transitionProps = {
   type: "tween",
   ease: "easeOut",
   duration: 0.2,
-  staggerChildren: 0.1,
-};
-
-const staggerVariants = {
-  open: {
-    transition: { staggerChildren: 0.03, delayChildren: 0.02 },
-  },
 };
 
 export function DocsSidebar() {
   const [isCollapsed, setIsCollapsed] = useState(true);
   const pathname = usePathname();
+  
+  const navItems = [
+    { href: "/docs", icon: BookOpen, label: "Overview", exact: true },
+    { href: "/docs/introduction", icon: Zap, label: "Introduction" },
+    { href: "/docs/installation", icon: Download, label: "Installation" },
+    { href: "/docs/examples", icon: Code, label: "Examples" },
+    { href: "/docs/integrations", icon: Layers, label: "Integrations", separator: true },
+  ];
+
   return (
     <motion.div
-      className={cn(
-        "sidebar fixed left-0 z-40 h-full shrink-0 border-r fixed",
-      )}
+      className="fixed left-0 top-0 z-40 h-screen shrink-0 border-r border-foreground/20"
       initial={isCollapsed ? "closed" : "open"}
       animate={isCollapsed ? "closed" : "open"}
       variants={sidebarVariants}
@@ -83,121 +71,66 @@ export function DocsSidebar() {
       onMouseEnter={() => setIsCollapsed(false)}
       onMouseLeave={() => setIsCollapsed(true)}
     >
-      <motion.div
-        className={`relative z-40 flex text-muted-foreground h-full shrink-0 flex-col bg-white dark:bg-black transition-all`}
-        variants={contentVariants}
-      >
-        <motion.ul variants={staggerVariants} className="flex h-full flex-col">
-          <div className="flex grow flex-col items-center">
-            <div className="flex h-[54px] w-full shrink-0 border-b p-2">
-              <div className="mt-[1.5px] flex w-full">
-                <Link href="/" className="w-full">
-                  <Button
-                    variant="ghost"
-                    size="sm"
-                    className="flex w-fit items-center gap-2 px-2"
-                  >
-                    <Zap className="h-4 w-4" />
-                    <motion.li
-                      variants={variants}
-                      className="flex w-fit items-center gap-2"
-                    >
-                      {!isCollapsed && (
-                        <p className="text-sm font-medium">Fluid Protocol</p>
-                      )}
-                    </motion.li>
-                  </Button>
-                </Link>
-              </div>
-            </div>
-
-            <div className="flex h-full w-full flex-col">
-              <div className="flex grow flex-col gap-4">
-                <ScrollArea className="h-16 grow p-2">
-                  <div className={cn("flex w-full flex-col gap-1")}>
-                    <Link
-                      href="/docs"
-                      className={cn(
-                        "flex h-8 w-full flex-row items-center rounded-md px-2 py-1.5 transition hover:bg-muted hover:text-primary",
-                        pathname === "/docs" &&
-                          "bg-muted text-blue-600",
-                      )}
-                    >
-                      <BookOpen className="h-4 w-4" />
-                      <motion.li variants={variants}>
-                        {!isCollapsed && (
-                          <p className="ml-2 text-sm font-medium">Overview</p>
-                        )}
-                      </motion.li>
-                    </Link>
-                    <Link
-                      href="/docs/introduction"
-                      className={cn(
-                        "flex h-8 w-full flex-row items-center rounded-md px-2 py-1.5 transition hover:bg-muted hover:text-primary",
-                        pathname?.includes("introduction") &&
-                          "bg-muted text-blue-600",
-                      )}
-                    >
-                      <Zap className="h-4 w-4" />
-                      <motion.li variants={variants}>
-                        {!isCollapsed && (
-                          <p className="ml-2 text-sm font-medium">Introduction</p>
-                        )}
-                      </motion.li>
-                    </Link>
-                    <Link
-                      href="/docs/installation"
-                      className={cn(
-                        "flex h-8 w-full flex-row items-center rounded-md px-2 py-1.5 transition hover:bg-muted hover:text-primary",
-                        pathname?.includes("installation") &&
-                          "bg-muted text-blue-600",
-                      )}
-                    >
-                      <Download className="h-4 w-4" />
-                      <motion.li variants={variants}>
-                        {!isCollapsed && (
-                          <p className="ml-2 text-sm font-medium">Installation</p>
-                        )}
-                      </motion.li>
-                    </Link>
-                    <Link
-                      href="/docs/examples"
-                      className={cn(
-                        "flex h-8 w-full flex-row items-center rounded-md px-2 py-1.5 transition hover:bg-muted hover:text-primary",
-                        pathname?.includes("examples") &&
-                          "bg-muted text-blue-600",
-                      )}
-                    >
-                      <Code className="h-4 w-4" />
-                      <motion.li variants={variants}>
-                        {!isCollapsed && (
-                          <p className="ml-2 text-sm font-medium">Examples</p>
-                        )}
-                      </motion.li>
-                    </Link>
-                    <Separator className="w-full" />
-                    <Link
-                      href="/docs/integrations"
-                      className={cn(
-                        "flex h-8 w-full flex-row items-center rounded-md px-2 py-1.5 transition hover:bg-muted hover:text-primary",
-                        pathname?.includes("integrations") &&
-                          "bg-muted text-blue-600",
-                      )}
-                    >
-                      <Layers className="h-4 w-4" />
-                      <motion.li variants={variants}>
-                        {!isCollapsed && (
-                          <p className="ml-2 text-sm font-medium">Integrations</p>
-                        )}
-                      </motion.li>
-                    </Link>
-                  </div>
-                </ScrollArea>
-              </div>
-            </div>
+      <div className="relative z-40 flex h-full w-full flex-col bg-background text-muted-foreground transition-all">
+        <div className="flex h-full flex-col">
+          <div className="flex h-[54px] shrink-0 items-center border-b border-foreground/20 px-2">
+            <Link href="/" className="w-full">
+              <Button
+                variant="ghost"
+                size="sm"
+                className="flex w-full items-center gap-2 px-2"
+              >
+                <Zap className="h-4 w-4 shrink-0" />
+                <motion.span
+                  variants={variants}
+                  className="flex items-center"
+                >
+                  {!isCollapsed && (
+                    <span className="text-sm font-medium">Fluid Protocol</span>
+                  )}
+                </motion.span>
+              </Button>
+            </Link>
           </div>
-        </motion.ul>
-      </motion.div>
+
+          <div className="flex flex-1 flex-col overflow-hidden">
+            <ScrollArea className="flex-1 px-2 py-4">
+              <nav className="flex flex-col gap-1">
+                {navItems.map((item, idx) => {
+                  const Icon = item.icon;
+                  const isActive = item.exact
+                    ? pathname === item.href
+                    : pathname?.includes(item.href);
+
+                  return (
+                    <div key={item.href}>
+                      {item.separator && <Separator className="my-2" />}
+                      <Link
+                        href={item.href}
+                        className={cn(
+                          "flex h-9 w-full items-center gap-2 rounded-md px-2 py-1.5 text-sm transition-colors",
+                          "hover:bg-foreground/10 hover:text-foreground",
+                          isActive && "bg-foreground/10 text-foreground font-medium"
+                        )}
+                      >
+                        <Icon className="h-4 w-4 shrink-0" />
+                        <motion.span
+                          variants={variants}
+                          className="flex items-center"
+                        >
+                          {!isCollapsed && (
+                            <span className="text-sm">{item.label}</span>
+                          )}
+                        </motion.span>
+                      </Link>
+                    </div>
+                  );
+                })}
+              </nav>
+            </ScrollArea>
+          </div>
+        </div>
+      </div>
     </motion.div>
   );
 }

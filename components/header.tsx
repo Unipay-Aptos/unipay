@@ -18,7 +18,7 @@ export const Header = () => {
         <div className="ml-auto flex items-center gap-4">
           <Link
             className="contents"
-            href="/#sign-in"
+            href="/docs"
           >
             <Button
               className="bg-background border-foreground text-foreground [&>[data-border]]:bg-foreground shadow-foreground/20 hover:shadow-foreground/30"
@@ -26,7 +26,6 @@ export const Header = () => {
               Read Docs
             </Button>
           </Link>
-
         </div>
       </header>
     </div>

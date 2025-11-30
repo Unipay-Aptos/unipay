@@ -136,8 +136,8 @@ export function AnimatedGridPattern({
       </defs>
       <rect width="100%" height="100%" fill={`url(#${id})`} />
       {mounted && (
-        <svg x={x} y={y} className="overflow-visible">
-          {squares.map(({ pos: [x, y], id }, index) => (
+      <svg x={x} y={y} className="overflow-visible">
+        {squares.map(({ pos: [x, y], id }, index) => (
           <motion.rect
             initial={{ opacity: 0 }}
             animate={{ opacity: maxOpacity }}
@@ -156,8 +156,8 @@ export function AnimatedGridPattern({
             fill="currentColor"
             strokeWidth="0"
           />
-          ))}
-        </svg>
+        ))}
+      </svg>
       )}
     </svg>
   )
