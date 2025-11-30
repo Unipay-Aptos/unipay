@@ -8,6 +8,8 @@ import {
   Code,
   Download,
   Layers,
+  Menu,
+  X,
   Zap,
 } from "lucide-react";
 import Link from "next/link";
@@ -44,13 +46,14 @@ const variants = {
 };
 
 const transitionProps = {
-  type: "tween",
-  ease: "easeOut",
+  type: "tween" as const,
+  ease: "easeOut" as const,
   duration: 0.2,
 };
 
 export function DocsSidebar() {
   const [isCollapsed, setIsCollapsed] = useState(true);
+  const [isMobileOpen, setIsMobileOpen] = useState(false);
   const pathname = usePathname();
   
   const navItems = [
@@ -62,23 +65,48 @@ export function DocsSidebar() {
   ];
 
   return (
-    <motion.div
-      className="fixed left-0 top-0 z-40 h-screen shrink-0 border-r border-foreground/20"
-      initial={isCollapsed ? "closed" : "open"}
-      animate={isCollapsed ? "closed" : "open"}
-      variants={sidebarVariants}
-      transition={transitionProps}
-      onMouseEnter={() => setIsCollapsed(false)}
-      onMouseLeave={() => setIsCollapsed(true)}
-    >
+    <>
+      {/* Mobile Menu Button */}
+      <button
+        onClick={() => setIsMobileOpen(!isMobileOpen)}
+        className="fixed left-4 top-4 z-50 flex h-10 w-10 items-center justify-center rounded-md border border-foreground/20 bg-background md:hidden"
+        aria-label="Toggle menu"
+      >
+        {isMobileOpen ? (
+          <X className="h-5 w-5" />
+        ) : (
+          <Menu className="h-5 w-5" />
+        )}
+      </button>
+
+      {/* Mobile Overlay */}
+      {isMobileOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-background/80 backdrop-blur-sm md:hidden"
+          onClick={() => setIsMobileOpen(false)}
+        />
+      )}
+
+      <motion.div
+        className={cn(
+          "fixed left-0 top-0 z-40 h-screen shrink-0 border-r border-foreground/20",
+          "hidden md:block",
+          isMobileOpen && "block"
+        )}
+        initial={isCollapsed ? "closed" : "open"}
+        animate={isCollapsed || isMobileOpen ? "closed" : "open"}
+        variants={sidebarVariants}
+        transition={transitionProps}
+        onMouseEnter={() => setIsCollapsed(false)}
+        onMouseLeave={() => setIsCollapsed(true)}
+      >
       <div className="relative z-40 flex h-full w-full flex-col bg-background text-muted-foreground transition-all">
         <div className="flex h-full flex-col">
           <div className="flex h-[54px] shrink-0 items-center border-b border-foreground/20 px-2">
             <Link href="/" className="w-full">
               <Button
-                variant="ghost"
                 size="sm"
-                className="flex w-full items-center gap-2 px-2"
+                className="flex w-full items-center gap-2 bg-transparent border-transparent hover:bg-foreground/10 px-2"
               >
                 <Zap className="h-4 w-4 shrink-0" />
                 <motion.span
@@ -107,6 +135,7 @@ export function DocsSidebar() {
                       {item.separator && <Separator className="my-2" />}
                       <Link
                         href={item.href}
+                        onClick={() => setIsMobileOpen(false)}
                         className={cn(
                           "flex h-9 w-full items-center gap-2 rounded-md px-2 py-1.5 text-sm transition-colors",
                           "hover:bg-foreground/10 hover:text-foreground",
@@ -132,6 +161,7 @@ export function DocsSidebar() {
         </div>
       </div>
     </motion.div>
+    </>
   );
 }
 

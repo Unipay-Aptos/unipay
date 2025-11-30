@@ -11,24 +11,24 @@ export default function ExamplesPage() {
   return (
     <div className="flex min-h-screen">
       <DocsSidebar />
-      <div className="flex-1 ml-[3.05rem] transition-all duration-200 lg:ml-[15rem]">
-        <main className="container max-w-4xl px-6 py-12">
+      <div className="flex-1 transition-all duration-200 md:ml-[3.05rem] lg:ml-[15rem]">
+        <main className="container max-w-4xl px-4 py-8 sm:px-6 sm:py-12">
           <div className="prose prose-invert max-w-none">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-4xl sm:text-5xl font-sentient mb-6">
-                <HyperText startOnView duration={1200} className="text-4xl sm:text-5xl font-sentient">
+              <h1 className="mb-6 text-3xl font-sentient sm:text-4xl lg:text-5xl">
+                <HyperText startOnView duration={1200} className="text-3xl font-sentient sm:text-4xl lg:text-5xl">
                   Examples
                 </HyperText>
               </h1>
             </motion.div>
 
             <AnimatedSection delay={0.1}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
-                <h2 className="text-2xl font-sentient mb-4">
+              <div className="mb-8 rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <h2 className="mb-4 text-xl font-sentient sm:text-2xl">
                   <Highlighter color="#4F46E5" action="underline" isView>
                     Basic Transfer
                   </Highlighter>
@@ -62,13 +62,13 @@ transfer();`}
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
-                <h2 className="text-2xl font-sentient mb-4">
+              <div className="mb-8 rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <h2 className="mb-4 text-xl font-sentient sm:text-2xl">
                   <Highlighter color="#10B981" action="box" isView>
                     Transfer with Custom Recipient
                   </Highlighter>
                 </h2>
-                <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
+                <p className="mb-4 font-mono text-xs leading-relaxed text-foreground/80 sm:text-sm">
                   Specify a custom Aptos address as the recipient:
                 </p>
                 <CodeBlock
@@ -91,13 +91,13 @@ console.log('Destination TX:', result.destinationTx);`}
             </AnimatedSection>
 
             <AnimatedSection delay={0.3}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
-                <h2 className="text-2xl font-sentient mb-4">
+              <div className="mb-8 rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <h2 className="mb-4 text-xl font-sentient sm:text-2xl">
                   <Highlighter color="#F59E0B" action="bracket" isView>
                     Error Handling
                   </Highlighter>
                 </h2>
-                <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
+                <p className="mb-4 font-mono text-xs leading-relaxed text-foreground/80 sm:text-sm">
                   Comprehensive error handling example:
                 </p>
                 <CodeBlock
@@ -134,16 +134,16 @@ async function transferWithErrorHandling() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.4}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
-                <h2 className="text-2xl font-sentient mb-4">
+              <div className="mb-8 rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <h2 className="mb-4 text-xl font-sentient sm:text-2xl">
                   <Highlighter color="#8B5CF6" action="circle" isView>
                     CLI Usage
                   </Highlighter>
                 </h2>
-                <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
+                <p className="mb-4 font-mono text-xs leading-relaxed text-foreground/80 sm:text-sm">
                   Run transfers directly from the command line:
                 </p>
-                <div className="space-y-4 font-mono text-sm">
+                <div className="space-y-4 font-mono text-xs sm:text-sm">
                   {[
                     {
                       label: "Transfer 1.0 USDC (uses sponsor wallet as recipient):",
@@ -174,13 +174,13 @@ async function transferWithErrorHandling() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.5}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
-                <h2 className="text-2xl font-sentient mb-4">
+              <div className="mb-8 rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <h2 className="mb-4 text-xl font-sentient sm:text-2xl">
                   <Highlighter color="#EF4444" action="underline" isView>
                     TypeScript Types
                   </Highlighter>
                 </h2>
-                <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
+                <p className="mb-4 font-mono text-xs leading-relaxed text-foreground/80 sm:text-sm">
                   Full TypeScript support with type definitions:
                 </p>
                 <CodeBlock
@@ -211,13 +211,13 @@ async function typedTransfer(): Promise<TransferResult> {
             </AnimatedSection>
 
             <AnimatedSection delay={0.6}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
-                <h2 className="text-2xl font-sentient mb-4">
+              <div className="mb-8 rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <h2 className="mb-4 text-xl font-sentient sm:text-2xl">
                   <Highlighter color="#6366F1" action="box" isView>
                     Advanced: Custom Configuration
                   </Highlighter>
                 </h2>
-                <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
+                <p className="mb-4 font-mono text-xs leading-relaxed text-foreground/80 sm:text-sm">
                   For advanced use cases, you can configure custom signers and SDK instances:
                 </p>
                 <CodeBlock
@@ -260,13 +260,13 @@ const result = await transferUsdcViaCctp({
             </AnimatedSection>
 
             <AnimatedSection delay={0.7}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 backdrop-blur-sm">
-                <h2 className="text-2xl font-sentient mb-4">
+              <div className="rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <h2 className="mb-4 text-xl font-sentient sm:text-2xl">
                   <Highlighter color="#10B981" action="bracket" isView>
                     Transfer Result
                   </Highlighter>
                 </h2>
-                <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
+                <p className="mb-4 font-mono text-xs leading-relaxed text-foreground/80 sm:text-sm">
                   The transfer function returns a result object with the following structure:
                 </p>
                 <CodeBlock

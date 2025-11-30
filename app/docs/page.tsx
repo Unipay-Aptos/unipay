@@ -12,33 +12,33 @@ export default function DocsPage() {
   return (
     <div className="flex min-h-screen">
       <DocsSidebar />
-      <div className="flex-1 ml-[3.05rem] transition-all duration-200 lg:ml-[15rem]">
-        <main className="container max-w-4xl px-6 py-12">
+      <div className="flex-1 transition-all duration-200 md:ml-[3.05rem] lg:ml-[15rem]">
+        <main className="container max-w-4xl px-4 py-8 sm:px-6 sm:py-12">
           <div className="prose prose-invert max-w-none">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-4xl sm:text-5xl font-sentient mb-6">
+              <h1 className="mb-6 text-3xl font-sentient sm:text-4xl lg:text-5xl">
                 <LineShadowText shadowColor="rgba(255, 255, 255, 0.3)">
                   Fluid Protocol
                 </LineShadowText>{" "}
                 <span className="font-light">SDK</span>
               </h1>
-              <p className="text-xl text-foreground/70 mb-8 font-mono">
+              <p className="mb-8 font-mono text-base text-foreground/70 sm:text-lg lg:text-xl">
                 Cross-Chain USDC Transfer: Base Sepolia → Aptos via Circle CCTP
               </p>
             </motion.div>
 
             <AnimatedSection delay={0.1}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
-                <h2 className="text-2xl font-sentient mb-4">
+              <div className="mb-8 rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <h2 className="mb-4 text-xl font-sentient sm:text-2xl">
                   <Highlighter color="#4F46E5" action="underline" isView>
                     What is Fluid Protocol?
                   </Highlighter>
                 </h2>
-                <p className="text-foreground/80 font-mono text-sm leading-relaxed">
+                <p className="font-mono text-xs leading-relaxed text-foreground/80 sm:text-sm">
                   Fluid Protocol is a <Highlighter color="#10B981" action="highlight" isView>Node.js + TypeScript SDK</Highlighter> for transferring USDC from Base Sepolia (EVM) 
                   to Aptos (Move) using <Highlighter color="#F59E0B" action="box" isView>Circle CCTP</Highlighter> (Cross-Chain Transfer Protocol) via the Wormhole SDK. 
                   This is the same method that Portal Bridge uses and is the only method that works for 
@@ -48,7 +48,7 @@ export default function DocsPage() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
-              <div className="mb-8 grid gap-6 md:grid-cols-2">
+              <div className="mb-8 grid gap-4 sm:gap-6 md:grid-cols-2">
                 {[
                   { title: "Source Chain", desc: "Base Sepolia (EVM-compatible)" },
                   { title: "Destination Chain", desc: "Aptos (Move-based)" },
@@ -61,14 +61,14 @@ export default function DocsPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.5, delay: 0.3 + idx * 0.1 }}
-                    className="rounded-lg border border-foreground/20 bg-foreground/5 p-6 backdrop-blur-sm transition-all hover:border-foreground/40"
+                    className="rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm transition-all hover:border-foreground/40 sm:p-6"
                   >
-                    <h3 className="mb-3 text-lg font-mono uppercase">
+                    <h3 className="mb-3 text-base font-mono uppercase sm:text-lg">
                       <Highlighter color="#6366F1" action="circle" isView>
                         {item.title}
                       </Highlighter>
                     </h3>
-                    <p className="font-mono text-sm text-foreground/60">
+                    <p className="font-mono text-xs text-foreground/60 sm:text-sm">
                       {item.desc}
                     </p>
                   </motion.div>
@@ -77,13 +77,13 @@ export default function DocsPage() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.3}>
-              <div className="mb-8 rounded-lg border border-foreground/20 bg-foreground/5 p-6 backdrop-blur-sm">
-                <h2 className="mb-4 text-2xl font-sentient">
+              <div className="mb-8 rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <h2 className="mb-4 text-xl font-sentient sm:text-2xl">
                   <Highlighter color="#8B5CF6" action="bracket" isView>
                     Key Features
                   </Highlighter>
                 </h2>
-                <ul className="space-y-3 font-mono text-sm">
+                <ul className="space-y-3 font-mono text-xs sm:text-sm">
                   {[
                     { label: "Circle CCTP Integration", desc: "Uses Circle's Cross-Chain Transfer Protocol" },
                     { label: "Wormhole SDK", desc: "Leverages official Wormhole SDK for CCTP support" },
@@ -111,13 +111,13 @@ export default function DocsPage() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.4}>
-              <div className="rounded-lg border border-foreground/20 bg-foreground/5 p-6 backdrop-blur-sm">
-                <h2 className="mb-4 text-2xl font-sentient">
-                  <HyperText startOnView duration={1000} className="text-2xl font-sentient">
+              <div className="rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <h2 className="mb-4 text-xl font-sentient sm:text-2xl">
+                  <HyperText startOnView duration={1000} className="text-xl font-sentient sm:text-2xl">
                     Quick Start
                   </HyperText>
                 </h2>
-                <div className="space-y-6 font-mono text-sm">
+                <div className="space-y-4 font-mono text-xs sm:space-y-6 sm:text-sm">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}

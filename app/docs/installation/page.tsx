@@ -11,29 +11,29 @@ export default function InstallationPage() {
   return (
     <div className="flex min-h-screen">
       <DocsSidebar />
-      <div className="flex-1 ml-[3.05rem] transition-all duration-200 lg:ml-[15rem]">
-        <main className="container max-w-4xl px-6 py-12">
+      <div className="flex-1 transition-all duration-200 md:ml-[3.05rem] lg:ml-[15rem]">
+        <main className="container max-w-4xl px-4 py-8 sm:px-6 sm:py-12">
           <div className="prose prose-invert max-w-none">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-4xl sm:text-5xl font-sentient mb-6">
-                <HyperText startOnView duration={1200} className="text-4xl sm:text-5xl font-sentient">
+              <h1 className="mb-6 text-3xl font-sentient sm:text-4xl lg:text-5xl">
+                <HyperText startOnView duration={1200} className="text-3xl font-sentient sm:text-4xl lg:text-5xl">
                   Installation
                 </HyperText>
               </h1>
             </motion.div>
 
             <AnimatedSection delay={0.1}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
-                <h2 className="text-2xl font-sentient mb-4">
+              <div className="mb-8 rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <h2 className="mb-4 text-xl font-sentient sm:text-2xl">
                   <Highlighter color="#4F46E5" action="underline" isView>
                     Prerequisites
                   </Highlighter>
                 </h2>
-                <ul className="space-y-3 font-mono text-sm text-foreground/80">
+                <ul className="space-y-3 font-mono text-xs text-foreground/80 sm:text-sm">
                   {[
                     "Node.js 18+ and npm",
                     "Base Sepolia testnet wallet with ETH and USDC",
@@ -56,13 +56,13 @@ export default function InstallationPage() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
-                <h2 className="text-2xl font-sentient mb-4">
+              <div className="mb-8 rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <h2 className="mb-4 text-xl font-sentient sm:text-2xl">
                   <Highlighter color="#10B981" action="box" isView>
                     Install via NPM
                   </Highlighter>
                 </h2>
-                <div className="space-y-6 font-mono text-sm">
+                <div className="space-y-4 font-mono text-xs sm:space-y-6 sm:text-sm">
                   {[
                     { label: "Install the package:", code: "npm install @fluid-sdk/fluid-sdk", lang: "bash" },
                     { label: "Or using yarn:", code: "yarn add @fluid-sdk/fluid-sdk", lang: "bash" },
@@ -88,13 +88,13 @@ export default function InstallationPage() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.3}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
-                <h2 className="text-2xl font-sentient mb-4">
+              <div className="mb-8 rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <h2 className="mb-4 text-xl font-sentient sm:text-2xl">
                   <Highlighter color="#F59E0B" action="bracket" isView>
                     Configuration
                   </Highlighter>
                 </h2>
-                <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
+                <p className="mb-4 font-mono text-xs leading-relaxed text-foreground/80 sm:text-sm">
                   Create a <Highlighter color="#6366F1" action="circle" isView>.env.local</Highlighter> or <Highlighter color="#6366F1" action="circle" isView>.env</Highlighter> file in your project root:
                 </p>
                 <motion.div
@@ -134,13 +134,13 @@ NETWORK_TYPE=Testnet`}
             </AnimatedSection>
 
             <AnimatedSection delay={0.4}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
-                <h2 className="text-2xl font-sentient mb-4">
+              <div className="mb-8 rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <h2 className="mb-4 text-xl font-sentient sm:text-2xl">
                   <Highlighter color="#8B5CF6" action="underline" isView>
                     Environment Variables
                   </Highlighter>
                 </h2>
-                <div className="space-y-6 font-mono text-sm">
+                <div className="space-y-4 font-mono text-xs sm:space-y-6 sm:text-sm">
                   {[
                     {
                       title: "Base Sepolia Configuration",
@@ -170,12 +170,12 @@ NETWORK_TYPE=Testnet`}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: 0.5 + idx * 0.15 }}
                     >
-                      <h3 className="text-lg font-mono uppercase mb-3 text-foreground/90">
+                      <h3 className="mb-3 text-base font-mono uppercase text-foreground/90 sm:text-lg">
                         <Highlighter color="#6366F1" action="circle" isView>
                           {section.title}
                         </Highlighter>
                       </h3>
-                      <ul className="space-y-2 text-foreground/70">
+                      <ul className="space-y-2 text-xs text-foreground/70 sm:text-sm">
                         {section.vars.map((variable, varIdx) => (
                           <motion.li
                             key={varIdx}
@@ -198,13 +198,13 @@ NETWORK_TYPE=Testnet`}
             </AnimatedSection>
 
             <AnimatedSection delay={0.5}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
-                <h2 className="text-2xl font-sentient mb-4">
+              <div className="mb-8 rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <h2 className="mb-4 text-xl font-sentient sm:text-2xl">
                   <Highlighter color="#EF4444" action="box" isView>
                     Getting Testnet Tokens
                   </Highlighter>
                 </h2>
-                <div className="space-y-6 font-mono text-sm">
+                <div className="space-y-4 font-mono text-xs sm:space-y-6 sm:text-sm">
                   {[
                     {
                       title: "Base Sepolia ETH",
@@ -230,12 +230,12 @@ NETWORK_TYPE=Testnet`}
                       viewport={{ once: true }}
                       transition={{ duration: 0.5, delay: 0.6 + idx * 0.1 }}
                     >
-                      <h3 className="text-lg font-mono uppercase mb-2 text-foreground/90">
+                      <h3 className="mb-2 text-base font-mono uppercase text-foreground/90 sm:text-lg">
                         <Highlighter color="#10B981" action="highlight" isView>
                           {item.title}
                         </Highlighter>
                       </h3>
-                      <p className="text-foreground/70 mb-2">{item.desc}</p>
+                      <p className="mb-2 text-xs text-foreground/70 sm:text-sm">{item.desc}</p>
                       {item.link && (
                         <a
                           href={item.link}
@@ -253,13 +253,13 @@ NETWORK_TYPE=Testnet`}
             </AnimatedSection>
 
             <AnimatedSection delay={0.6}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 backdrop-blur-sm">
-                <h2 className="text-2xl font-sentient mb-4">
+              <div className="rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <h2 className="mb-4 text-xl font-sentient sm:text-2xl">
                   <Highlighter color="#3B82F6" action="underline" isView>
                     Verify Installation
                   </Highlighter>
                 </h2>
-                <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
+                <p className="mb-4 font-mono text-xs leading-relaxed text-foreground/80 sm:text-sm">
                   After installation, verify that the package is correctly installed:
                 </p>
                 <CodeBlock

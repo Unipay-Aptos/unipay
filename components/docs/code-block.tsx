@@ -30,16 +30,16 @@ export function CodeBlock({ code, language, filename, className }: CodeBlockProp
       className={cn("relative group", className)}
     >
       {filename && (
-        <div className="flex items-center justify-between px-4 py-2 bg-foreground/10 border-b border-foreground/20 rounded-t-lg">
-          <span className="text-xs font-mono text-foreground/60">{filename}</span>
+        <div className="flex items-center justify-between border-b border-foreground/20 rounded-t-lg bg-foreground/10 px-3 py-2 sm:px-4">
+          <span className="text-[10px] font-mono text-foreground/60 sm:text-xs">{filename}</span>
           {language && (
-            <span className="text-xs font-mono text-foreground/40 uppercase">{language}</span>
+            <span className="text-[10px] font-mono uppercase text-foreground/40 sm:text-xs">{language}</span>
           )}
         </div>
       )}
       <div className="relative">
-        <pre className="overflow-x-auto p-4 bg-background/50 border border-foreground/20 rounded-lg font-mono text-sm leading-relaxed">
-          <code className="text-foreground/90 whitespace-pre">{code}</code>
+        <pre className="overflow-x-auto rounded-lg border border-foreground/20 bg-background/50 p-3 font-mono text-xs leading-relaxed sm:p-4 sm:text-sm">
+          <code className="whitespace-pre text-foreground/90">{code}</code>
         </pre>
         <button
           onClick={copyToClipboard}

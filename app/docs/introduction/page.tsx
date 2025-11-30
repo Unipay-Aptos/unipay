@@ -11,35 +11,35 @@ export default function IntroductionPage() {
   return (
     <div className="flex min-h-screen">
       <DocsSidebar />
-      <div className="flex-1 ml-[3.05rem] transition-all duration-200 lg:ml-[15rem]">
-        <main className="container max-w-4xl px-6 py-12">
+      <div className="flex-1 transition-all duration-200 md:ml-[3.05rem] lg:ml-[15rem]">
+        <main className="container max-w-4xl px-4 py-8 sm:px-6 sm:py-12">
           <div className="prose prose-invert max-w-none">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-4xl sm:text-5xl font-sentient mb-6">
-                <HyperText startOnView duration={1200} className="text-4xl sm:text-5xl font-sentient">
+              <h1 className="mb-6 text-3xl font-sentient sm:text-4xl lg:text-5xl">
+                <HyperText startOnView duration={1200} className="text-3xl font-sentient sm:text-4xl lg:text-5xl">
                   Introduction
                 </HyperText>
               </h1>
             </motion.div>
 
             <AnimatedSection delay={0.1}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
-                <h2 className="text-2xl font-sentient mb-4">
+              <div className="mb-8 rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <h2 className="mb-4 text-xl font-sentient sm:text-2xl">
                   <Highlighter color="#4F46E5" action="underline" isView>
                     Why Do We Need Fluid Protocol?
                   </Highlighter>
                 </h2>
-                <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
+                <p className="mb-4 font-mono text-xs leading-relaxed text-foreground/80 sm:text-sm">
                   Cross-chain transfers between <Highlighter color="#10B981" action="highlight" isView>EVM and Move-based blockchains</Highlighter> have historically been 
                   challenging. Traditional bridge solutions often don't support transfers between these 
                   fundamentally different blockchain architectures, leaving developers with limited options 
                   for moving assets like USDC between ecosystems.
                 </p>
-                <p className="text-foreground/80 font-mono text-sm leading-relaxed">
+                <p className="font-mono text-xs leading-relaxed text-foreground/80 sm:text-sm">
                   Fluid Protocol solves this by providing a <Highlighter color="#F59E0B" action="box" isView>seamless, production-ready SDK</Highlighter> that handles 
                   the complex orchestration of cross-chain transfers using Circle's proven CCTP infrastructure 
                   and Wormhole's universal messaging protocol.
@@ -48,13 +48,13 @@ export default function IntroductionPage() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
-                <h2 className="text-2xl font-sentient mb-4">
+              <div className="mb-8 rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <h2 className="mb-4 text-xl font-sentient sm:text-2xl">
                   <Highlighter color="#8B5CF6" action="bracket" isView>
                     What Problems Does It Solve?
                   </Highlighter>
                 </h2>
-                <div className="space-y-6 font-mono text-sm">
+                <div className="space-y-4 font-mono text-xs sm:space-y-6 sm:text-sm">
                   {[
                     {
                       num: "1",
@@ -94,12 +94,12 @@ export default function IntroductionPage() {
                       transition={{ duration: 0.5, delay: 0.3 + idx * 0.1 }}
                       className="border-l-2 border-foreground/30 pl-4"
                     >
-                      <h3 className="text-lg font-mono uppercase mb-2 text-foreground/90">
+                      <h3 className="mb-2 text-base font-mono uppercase text-foreground/90 sm:text-lg">
                         <Highlighter color="#6366F1" action="circle" isView>
                           {problem.num}. {problem.title}
                         </Highlighter>
                       </h3>
-                      <p className="text-foreground/70 leading-relaxed">
+                      <p className="leading-relaxed text-foreground/70 text-xs sm:text-sm">
                         {problem.highlight ? (
                           <>
                             {problem.desc.split(problem.highlight)[0]}
@@ -134,13 +134,13 @@ export default function IntroductionPage() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.3}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
-                <h2 className="text-2xl font-sentient mb-4">
+              <div className="mb-8 rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <h2 className="mb-4 text-xl font-sentient sm:text-2xl">
                   <LineShadowText shadowColor="rgba(139, 92, 246, 0.5)">
                     Why Use Circle CCTP?
                   </LineShadowText>
                 </h2>
-                <div className="space-y-4 font-mono text-sm">
+                <div className="space-y-4 font-mono text-xs sm:text-sm">
                   <p className="text-foreground/80 leading-relaxed">
                     Circle's Cross-Chain Transfer Protocol (CCTP) is the same infrastructure powering <Highlighter color="#10B981" action="highlight" isView>Portal Bridge</Highlighter>, 
                     one of the most trusted cross-chain bridges in the ecosystem. CCTP provides:
@@ -168,13 +168,13 @@ export default function IntroductionPage() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.4}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
-                <h2 className="text-2xl font-sentient mb-4">
-                  <HyperText startOnView duration={1000} className="text-2xl font-sentient">
+              <div className="mb-8 rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <h2 className="mb-4 text-xl font-sentient sm:text-2xl">
+                  <HyperText startOnView duration={1000} className="text-xl font-sentient sm:text-2xl">
                     How It Works
                   </HyperText>
                 </h2>
-                <div className="space-y-6 font-mono text-sm">
+                <div className="space-y-4 font-mono text-xs sm:space-y-6 sm:text-sm">
                   {[
                     {
                       step: "Step 1: Initiate Transfer on Base Sepolia",
@@ -201,12 +201,12 @@ export default function IntroductionPage() {
                       className="border-l-4 pl-4"
                       style={{ borderColor: step.color }}
                     >
-                      <h3 className="text-lg font-mono uppercase mb-2 text-foreground/90">
+                      <h3 className="mb-2 text-base font-mono uppercase text-foreground/90 sm:text-lg">
                         <Highlighter color={step.color} action="box" isView>
                           {step.step}
                         </Highlighter>
                       </h3>
-                      <p className="text-foreground/70 leading-relaxed">
+                      <p className="leading-relaxed text-foreground/70 text-xs sm:text-sm">
                         {step.desc}
                       </p>
                     </motion.div>
@@ -216,8 +216,8 @@ export default function IntroductionPage() {
             </AnimatedSection>
 
             <AnimatedSection delay={0.5}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 backdrop-blur-sm">
-                <h2 className="text-2xl font-sentient mb-4">
+              <div className="rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <h2 className="mb-4 text-xl font-sentient sm:text-2xl">
                   <Highlighter color="#EF4444" action="underline" isView>
                     Key Differences from TokenBridge
                   </Highlighter>
@@ -227,14 +227,14 @@ export default function IntroductionPage() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.6 }}
-                  className="overflow-x-auto"
+                  className="overflow-x-auto -mx-4 sm:mx-0"
                 >
-                  <table className="w-full text-sm font-mono">
+                  <table className="w-full font-mono text-xs sm:text-sm">
                     <thead>
                       <tr className="border-b border-foreground/20">
-                        <th className="text-left py-3 px-4 text-foreground/90">Aspect</th>
-                        <th className="text-left py-3 px-4 text-foreground/90">TokenBridge (Old)</th>
-                        <th className="text-left py-3 px-4 text-foreground/90">CCTP (Current)</th>
+                        <th className="px-2 py-2 text-left text-foreground/90 sm:px-4 sm:py-3">Aspect</th>
+                        <th className="px-2 py-2 text-left text-foreground/90 sm:px-4 sm:py-3">TokenBridge (Old)</th>
+                        <th className="px-2 py-2 text-left text-foreground/90 sm:px-4 sm:py-3">CCTP (Current)</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -253,9 +253,9 @@ export default function IntroductionPage() {
                           transition={{ duration: 0.3, delay: 0.7 + idx * 0.1 }}
                           className="border-b border-foreground/10 hover:bg-foreground/5"
                         >
-                          <td className="py-3 px-4 text-foreground/70">{row.aspect}</td>
-                          <td className="py-3 px-4 text-foreground/70">{row.old}</td>
-                          <td className={`py-3 px-4 ${row.highlight ? 'text-green-400 font-semibold' : 'text-foreground/70'}`}>
+                          <td className="px-2 py-2 text-foreground/70 sm:px-4 sm:py-3">{row.aspect}</td>
+                          <td className="px-2 py-2 text-foreground/70 sm:px-4 sm:py-3">{row.old}</td>
+                          <td className={`px-2 py-2 sm:px-4 sm:py-3 ${row.highlight ? 'text-green-400 font-semibold' : 'text-foreground/70'}`}>
                             {row.new}
                           </td>
                         </motion.tr>

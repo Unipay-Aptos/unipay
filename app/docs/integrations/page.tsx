@@ -12,28 +12,28 @@ export default function IntegrationsPage() {
   return (
     <div className="flex min-h-screen">
       <DocsSidebar />
-      <div className="flex-1 ml-[3.05rem] transition-all duration-200 lg:ml-[15rem]">
-        <main className="container max-w-4xl px-6 py-12">
+      <div className="flex-1 transition-all duration-200 md:ml-[3.05rem] lg:ml-[15rem]">
+        <main className="container max-w-4xl px-4 py-8 sm:px-6 sm:py-12">
           <div className="prose prose-invert max-w-none">
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6 }}
             >
-              <h1 className="text-4xl sm:text-5xl font-sentient mb-6">
-                <HyperText startOnView duration={1200} className="text-4xl sm:text-5xl font-sentient">
+              <h1 className="mb-6 text-3xl font-sentient sm:text-4xl lg:text-5xl">
+                <HyperText startOnView duration={1200} className="text-3xl font-sentient sm:text-4xl lg:text-5xl">
                   Integrations
                 </HyperText>
               </h1>
-              <p className="text-xl text-foreground/70 mb-8 font-mono">
+              <p className="mb-8 font-mono text-base text-foreground/70 sm:text-lg lg:text-xl">
                 Supported chains and integration guides
               </p>
             </motion.div>
 
             <AnimatedSection delay={0.1}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
-                <div className="flex items-center gap-3 mb-4">
-                  <h2 className="text-2xl font-sentient">
+              <div className="mb-8 rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <div className="mb-4 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+                  <h2 className="text-xl font-sentient sm:text-2xl">
                     <Highlighter color="#10B981" action="box" isView>
                       Base
                     </Highlighter>
@@ -42,24 +42,24 @@ export default function IntegrationsPage() {
                     Available
                   </Badge>
                 </div>
-                <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
+                <p className="mb-4 font-mono text-xs leading-relaxed text-foreground/80 sm:text-sm">
                   Base is an <Highlighter color="#3B82F6" action="highlight" isView>EVM-compatible Layer 2 blockchain</Highlighter> built on Ethereum. Fluid Protocol supports 
                   USDC transfers from Base Sepolia (testnet) to Aptos.
                 </p>
                 
-                <div className="space-y-6 font-mono text-sm">
+                <div className="space-y-4 font-mono text-xs sm:space-y-6 sm:text-sm">
                   <motion.div
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
-                    <h3 className="text-lg font-mono uppercase mb-3 text-foreground/90">
+                    <h3 className="mb-3 text-base font-mono uppercase text-foreground/90 sm:text-lg">
                       <Highlighter color="#6366F1" action="circle" isView>
                         Chain Information
                       </Highlighter>
                     </h3>
-                    <ul className="space-y-2 text-foreground/70">
+                    <ul className="space-y-2 text-xs text-foreground/70 sm:text-sm">
                       {[
                         { label: "Chain ID", value: "84532 (Base Sepolia)" },
                         { label: "Wormhole Chain ID", value: "30" },
@@ -85,7 +85,7 @@ export default function IntegrationsPage() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.3 }}
                   >
-                    <h3 className="text-lg font-mono uppercase mb-3 text-foreground/90">
+                    <h3 className="mb-3 text-base font-mono uppercase text-foreground/90 sm:text-lg">
                       <Highlighter color="#F59E0B" action="underline" isView>
                         Configuration
                       </Highlighter>
@@ -105,7 +105,7 @@ NETWORK_TYPE=Testnet`}
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.4 }}
                   >
-                    <h3 className="text-lg font-mono uppercase mb-3 text-foreground/90">
+                    <h3 className="mb-3 text-base font-mono uppercase text-foreground/90 sm:text-lg">
                       <Highlighter color="#8B5CF6" action="bracket" isView>
                         Usage Example
                       </Highlighter>
@@ -130,12 +130,12 @@ const result = await transferUsdcViaCctp({
                     viewport={{ once: true }}
                     transition={{ duration: 0.5, delay: 0.5 }}
                   >
-                    <h3 className="text-lg font-mono uppercase mb-3 text-foreground/90">
+                    <h3 className="mb-3 text-base font-mono uppercase text-foreground/90 sm:text-lg">
                       <Highlighter color="#EF4444" action="highlight" isView>
                         Getting Testnet Tokens
                       </Highlighter>
                     </h3>
-                    <ul className="space-y-2 text-foreground/70">
+                    <ul className="space-y-2 text-xs text-foreground/70 sm:text-sm">
                       <li>
                         <strong className="text-foreground/90">ETH:</strong>{" "}
                         <a 
@@ -157,9 +157,9 @@ const result = await transferUsdcViaCctp({
             </AnimatedSection>
 
             <AnimatedSection delay={0.2}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
-                <div className="flex items-center gap-3 mb-4">
-                  <h2 className="text-2xl font-sentient">
+              <div className="mb-8 rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <div className="mb-4 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+                  <h2 className="text-xl font-sentient sm:text-2xl">
                     <Highlighter color="#F59E0B" action="box" isView>
                       Solana
                     </Highlighter>
@@ -168,7 +168,7 @@ const result = await transferUsdcViaCctp({
                     Coming Soon
                   </Badge>
                 </div>
-                <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
+                <p className="mb-4 font-mono text-xs leading-relaxed text-foreground/80 sm:text-sm">
                   Solana integration is currently under development. This will enable USDC transfers from 
                   Solana to Aptos and other supported chains.
                 </p>
@@ -178,9 +178,9 @@ const result = await transferUsdcViaCctp({
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: 0.3 }}
-                  className="border-l-2 border-yellow-500/50 pl-4 bg-yellow-500/5 p-3 rounded"
+                  className="rounded border-l-2 border-yellow-500/50 bg-yellow-500/5 p-3 pl-4"
                 >
-                  <p className="text-foreground/80 text-sm font-mono">
+                  <p className="font-mono text-xs text-foreground/80 sm:text-sm">
                     <strong>Status:</strong> In development. Expected Q2 2024.
                   </p>
                 </motion.div>
@@ -188,9 +188,9 @@ const result = await transferUsdcViaCctp({
             </AnimatedSection>
 
             <AnimatedSection delay={0.3}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
-                <div className="flex items-center gap-3 mb-4">
-                  <h2 className="text-2xl font-sentient">
+              <div className="mb-8 rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <div className="mb-4 flex flex-col items-start gap-3 sm:flex-row sm:items-center">
+                  <h2 className="text-xl font-sentient sm:text-2xl">
                     <Highlighter color="#8B5CF6" action="bracket" isView>
                       Additional Chains
                     </Highlighter>
@@ -199,12 +199,12 @@ const result = await transferUsdcViaCctp({
                     Planned
                   </Badge>
                 </div>
-                <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
+                <p className="mb-4 font-mono text-xs leading-relaxed text-foreground/80 sm:text-sm">
                   We're actively working on expanding support to additional chains. The following are planned 
                   for future releases:
                 </p>
                 
-                <div className="space-y-3 font-mono text-sm">
+                <div className="space-y-3 font-mono text-xs sm:text-sm">
                   {[
                     "Ethereum Mainnet",
                     "Polygon",
@@ -229,16 +229,16 @@ const result = await transferUsdcViaCctp({
             </AnimatedSection>
 
             <AnimatedSection delay={0.4}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 mb-8 backdrop-blur-sm">
-                <h2 className="text-2xl font-sentient mb-4">
+              <div className="mb-8 rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <h2 className="mb-4 text-xl font-sentient sm:text-2xl">
                   <Highlighter color="#10B981" action="underline" isView>
                     Chain Requirements
                   </Highlighter>
                 </h2>
-                <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
+                <p className="mb-4 font-mono text-xs leading-relaxed text-foreground/80 sm:text-sm">
                   For a chain to be supported by Fluid Protocol, it must:
                 </p>
-                <ul className="space-y-3 font-mono text-sm text-foreground/70">
+                <ul className="space-y-3 font-mono text-xs text-foreground/70 sm:text-sm">
                   {[
                     "Support Circle CCTP contracts",
                     "Have Wormhole SDK support",
@@ -262,17 +262,17 @@ const result = await transferUsdcViaCctp({
             </AnimatedSection>
 
             <AnimatedSection delay={0.5}>
-              <div className="border border-foreground/20 rounded-lg p-6 bg-foreground/5 backdrop-blur-sm">
-                <h2 className="text-2xl font-sentient mb-4">
+              <div className="rounded-lg border border-foreground/20 bg-foreground/5 p-4 backdrop-blur-sm sm:p-6">
+                <h2 className="mb-4 text-xl font-sentient sm:text-2xl">
                   <Highlighter color="#3B82F6" action="box" isView>
                     Request New Chain Support
                   </Highlighter>
                 </h2>
-                <p className="text-foreground/80 font-mono text-sm leading-relaxed mb-4">
+                <p className="mb-4 font-mono text-xs leading-relaxed text-foreground/80 sm:text-sm">
                   Interested in seeing your chain supported? We're always looking to expand our integration 
                   coverage. Reach out to us:
                 </p>
-                <ul className="space-y-3 font-mono text-sm text-foreground/70">
+                <ul className="space-y-3 font-mono text-xs text-foreground/70 sm:text-sm">
                   {[
                     { label: "GitHub", link: "https://github.com/fluid-labs/fluid-sdk", text: "Open an issue" },
                     { label: "Discord", text: "Join our community to discuss integrations" },
