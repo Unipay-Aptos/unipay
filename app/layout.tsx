@@ -4,9 +4,9 @@ import { Header } from "@/components/header";
 import { ThemeProvider } from "@/components/theme-provider";
 
 export const metadata: Metadata = {
-  title: "Skal Ventures",
-  description: "Investment strategies that outperform the market",
-    generator: 'v0.app'
+  title: "Fluid Protocol",
+  description: "Aptos apps aren't limited to Aptos anymore. One protocol. Multiple chains. Zero boundaries.",
+    generator: 'fluid.xyz'
 };
 
 export default function RootLayout({
