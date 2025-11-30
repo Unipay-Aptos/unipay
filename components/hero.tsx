@@ -21,33 +21,33 @@ export function Hero() {
         {/* <Pill className="mb-6">BETA RELEASE</Pill> */}
 
         <h1 className="text-5xl sm:text-6xl md:text-7xl font-sentient">
-          The Future of  <br />
-          <i className="font-light">Multi-Chain</i> Starts Here 
+          Fluid Protocol <br />
+          <i className="font-light">Cross-Chain USDC</i> Transfers
         </h1>
 
-        <p className="font-mono text-sm sm:text-base text-foreground/60 text-balance mt-8 max-w-[440px] mx-auto">
-          One balance. Any network. Zero boundaries.
-                Cross-chain interaction, built to feel truly on-chain.
+        <p className="font-mono text-sm sm:text-base text-foreground/60 text-balance mt-8 max-w-[540px] mx-auto">
+          Seamless USDC transfers from Base Sepolia (EVM) to Aptos (Move) using Circle CCTP via Wormhole SDK. 
+          One protocol. Multiple chains. Zero boundaries.
         </p>
 
         <Link className="contents max-sm:hidden" href="/#contact">
           <Button
-            className="mt-14"
+            className="mt-14 bg-background border-foreground text-foreground [&>[data-border]]:bg-foreground shadow-foreground/20 hover:shadow-foreground/30"
             onMouseEnter={() => setHovering(true)}
             onMouseLeave={() => setHovering(false)}
           >
-            [Contact Us]
+            npm i @fluid-labs/sdk
           </Button>
         </Link>
 
         <Link className="contents sm:hidden" href="/#contact">
           <Button
             size="sm"
-            className="mt-14"
+            className="mt-14 bg-background border-foreground text-foreground [&>[data-border]]:bg-foreground shadow-foreground/20 hover:shadow-foreground/30"
             onMouseEnter={() => setHovering(true)}
             onMouseLeave={() => setHovering(false)}
           >
-            [Contact Us]
+            npm i @fluid-labs/sdk
           </Button>
         </Link>
       </div>
